@@ -8,7 +8,7 @@ int main()
     // Make a main window
     RenderWindow MENU(VideoMode(800, 600), "Main Menu", Style::Default);
     MainMenu mainMenu(MENU.getSize().x, MENU.getSize().y);
-
+    
     // --------------------------------------------------------------------------------- //
     //set background
     RectangleShape background;
@@ -17,7 +17,7 @@ int main()
     Maintexture.loadFromFile("Textures/save the galaxy.jpeg");
     background.setTexture(&Maintexture);
 
-   
+
     //photo to option
     RectangleShape Obackground;
     Obackground.setSize(Vector2f(800, 600));
@@ -56,19 +56,28 @@ int main()
 
                     int x = mainMenu.MainMenuPressed();
                     if (x == 0)
-                    {            
+                    {
                         //Initialize game object
-                        Game game;
-
+                        Game game(0);
+                   
                         game.run();
                         OPTIONS.close();
                         ABOUT.close();
-                        game.update(); 
-                        game.render(); 
-                        
+                        game.update();
+                        game.render();
+
 
                     }
-                    if (x == 1)
+                    if (x == 1) {
+                        Game game2(x);
+                        
+                        game2.run2();
+                        OPTIONS.close();
+                        ABOUT.close();
+                        game2.update2();
+                        game2.render2();
+                    }
+                    if (x == 2)
                     {
 
                         while (OPTIONS.isOpen())
@@ -87,7 +96,7 @@ int main()
                                     }
                                 }
                             }
-         
+
                             OPTIONS.clear();
 
                             // ------------------------------------------------- //
@@ -100,7 +109,7 @@ int main()
 
                         }
                     }
-                    if (x == 2)
+                    if (x == 3)
                     {
                         while (ABOUT.isOpen())
                         {
@@ -116,25 +125,25 @@ int main()
                                     }
                                 }
                             }
-                      
+
                             ABOUT.clear();
                             // ------------------------------------------------- //
                             ABOUT.draw(Obackground);
                             // ------------------------------------------------- //
 
-                   
+
                             OPTIONS.close();
                             ABOUT.display();
                         }
                     }
-                    if (x == 3)
+                    if (x == 4)
                         MENU.close();
                     break;
                 }
             }
         }
         MENU.clear();
-  
+
         MENU.draw(background);
         mainMenu.draw(MENU);
         MENU.display();
