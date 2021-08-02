@@ -38,7 +38,7 @@ private:
 	//PlayerGUI
 	sf::RectangleShape playerHpBar;
 	sf::RectangleShape playerHpBarBack;
-	
+
 	//player two
 	sf::RectangleShape playerHpBar2;
 	sf::RectangleShape playerHpBarBack2;
@@ -51,32 +51,40 @@ private:
 	//Private functions
 	void initWindow();
 	void initTextures();
-	void initGUI();
+	void initGUI(int controller);
 	void initWorld();
 	void initSystems();
 
-	void initPlayer();
+	void initPlayer(int controller);
+	void initPlayer2();
 	void initEnemies();
 
 
 public:
-	Game();
+	Game(int controller);
 	virtual ~Game();
 
 	//Functions
 	void run();
+	void run2();
 
 	void updatePollEvents();
 	void updateInput();
+	void updateInput2();
 	void updateGUI();
+	void updateGUI2();
 	void updateWorld();
 	void updateCollision();
+	void updateCollision2();
 	void updateBullets();
 	void updateEnemies();
+	void updateEnemies2();
 	void updateCombat();
 	void update();
+	void update2();
 
 	void renderGUI();
 	void renderWorld();
 	void render();
+	void render2();
 };
