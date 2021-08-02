@@ -35,11 +35,11 @@ private:
 	Player* player;
 	Player2* playertwo;
 
-	//PlayerGUI
+	//PlayerGUI Barra de vida
 	sf::RectangleShape playerHpBar;
 	sf::RectangleShape playerHpBarBack;
 
-	//player two
+	//Player2 Barra de vida
 	sf::RectangleShape playerHpBar2;
 	sf::RectangleShape playerHpBarBack2;
 
