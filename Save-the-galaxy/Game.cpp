@@ -1,6 +1,7 @@
 #include "Game.h"
 
 //Private functions
+//Inicializa la pantalla
 void Game::initWindow()
 {
 	this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "SaveTheGalaxyFromCOVID-19", sf::Style::Close | sf::Style::Titlebar);
@@ -8,7 +9,7 @@ void Game::initWindow()
 	this->window->setVerticalSyncEnabled(false);
 }
 
-
+//Carga la textura de la municion
 void Game::initTextures()
 {
 	this->textures["BULLET"] = new sf::Texture();
@@ -36,7 +37,7 @@ void Game::initGUI(int controller)
 		this->window->getSize().x / 2.f - this->gameOverText.getGlobalBounds().width / 2.f,
 		this->window->getSize().y / 2.f - this->gameOverText.getGlobalBounds().height / 2.f);
 
-	//Init player GUI
+	//Init player GUI Barra de vida player
 	this->playerHpBar.setSize(sf::Vector2f(300.f, 25.f));
 	this->playerHpBar.setFillColor(sf::Color::Red);
 	this->playerHpBar.setPosition(sf::Vector2f(20.f, 20.f));
@@ -44,6 +45,8 @@ void Game::initGUI(int controller)
 	this->playerHpBarBack = this->playerHpBar;
 	this->playerHpBarBack.setFillColor(sf::Color(25, 25, 25, 200));
 	if (controller == 1) {
+		
+		//barra de vida player2
 		this->playerHpBar2.setSize(sf::Vector2f(300.f, 25.f));
 		this->playerHpBar2.setFillColor(sf::Color::Blue);
 		this->playerHpBar2.setPosition(sf::Vector2f(480.f, 20.f));
@@ -122,6 +125,8 @@ Game::~Game()
 }
 
 //Functions
+
+//Mientras que el player tenga una vida >0 el juego seguira ejecutandose
 void Game::run()
 {
 	while (this->window->isOpen())
@@ -135,6 +140,7 @@ void Game::run()
 	}
 }
 
+//Mientras que un player tenga una vida >0 el juego seguira ejecutandose
 void Game::run2()
 {
 	while (this->window->isOpen())
@@ -190,7 +196,7 @@ void Game::updateInput()
 
 void Game::updateInput2()
 {
-	//Move player
+	//Move player1
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 		this->player->move(-1.f, 0.f);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
@@ -213,7 +219,7 @@ void Game::updateInput2()
 			)
 		);
 	}
-
+	//Move player2
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::J))
 		this->playertwo->move(-1.f, 0.f);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::L))
@@ -273,7 +279,8 @@ void Game::updateWorld()
 }
 
 void Game::updateCollision()
-{
+{	
+	//Player su Hp>0 se redirecciona a la posicion 1000,1000
 	if (this->player->getHp() <= 0)
 	{
 		this->player->setPosition(1000.f, 1000.f);
@@ -306,6 +313,7 @@ void Game::updateCollision()
 
 void Game::updateCollision2()
 {	
+	//Player su Hp>0 se redirecciona a la posicion 1000,1000
 	if (this->player->getHp() <= 0)
 	{
 		this->player->setPosition(1000.f, 1000.f);
@@ -332,7 +340,7 @@ void Game::updateCollision2()
 		this->player->setPosition(this->player->getBounds().left, this->window->getSize().y - this->player->getBounds().height);
 	}
 
-	//si muere 
+	////Player2 su Hp>0 se redirecciona a la posicion 1000,1000
 	if (this->playertwo->getHp() <= 0) {
 		this->playertwo->setPosition(1000.f, 1000.f);
 	}
@@ -515,6 +523,7 @@ void Game::update2()
 	this->player->update();
 	
 	this->playertwo->update();
+	
 	this->updateCollision2();
 
 	this->updateBullets();
