@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "MainMenu.h"
+#incldue <SFML/Audio.hpp>
 using namespace sf;
 
 int main()
@@ -16,7 +17,13 @@ int main()
     Texture Maintexture;
     Maintexture.loadFromFile("Textures/save the galaxy.jpeg");
     background.setTexture(&Maintexture);
-
+    
+    //Load music
+    sf::Music musica;
+    musica.openFromFile("sonido/theme.wav");
+    musica.setLoop(true);
+    musica.setVolume(10);
+    musica.play();
 
     //photo to option
     RectangleShape Obackground;
@@ -65,7 +72,7 @@ int main()
                         ABOUT.close();
                         game.update();
                         game.render();
-
+                        musica.play();
 
                     }
                     if (x == 1) {
@@ -76,6 +83,7 @@ int main()
                         ABOUT.close();
                         game2.update2();
                         game2.render2();
+                        musica.play();
                     }
                     if (x == 2)
                     {
