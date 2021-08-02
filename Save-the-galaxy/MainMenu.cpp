@@ -10,26 +10,32 @@ MainMenu::MainMenu(float width, float height)
 	mainMenu[0].setFont(font);
 	mainMenu[0].setFillColor(Color::White);
 	mainMenu[0].setString("Play");
-	mainMenu[0].setCharacterSize(70);
+	mainMenu[0].setCharacterSize(50);
 	mainMenu[0].setPosition(310, 100);
 
 	mainMenu[1].setFont(font);
 	mainMenu[1].setFillColor(Color::White);
-	mainMenu[1].setString("Option");
-	mainMenu[1].setCharacterSize(70);
+	mainMenu[1].setString("Multiplayer");
+	mainMenu[1].setCharacterSize(50);
 	mainMenu[1].setPosition(280, 200);
 
 	mainMenu[2].setFont(font);
 	mainMenu[2].setFillColor(Color::White);
-	mainMenu[2].setString("About");
-	mainMenu[2].setCharacterSize(70);
-	mainMenu[2].setPosition(290, 300);
+	mainMenu[2].setString("Option");
+	mainMenu[2].setCharacterSize(50);
+	mainMenu[2].setPosition(280, 300);
 
 	mainMenu[3].setFont(font);
 	mainMenu[3].setFillColor(Color::White);
-	mainMenu[3].setString("Exit");
-	mainMenu[3].setCharacterSize(70);
-	mainMenu[3].setPosition(320, 400);
+	mainMenu[3].setString("About");
+	mainMenu[3].setCharacterSize(50);
+	mainMenu[3].setPosition(290, 400);
+
+	mainMenu[4].setFont(font);
+	mainMenu[4].setFillColor(Color::White);
+	mainMenu[4].setString("Exit");
+	mainMenu[4].setCharacterSize(50);
+	mainMenu[4].setPosition(320, 500);
 
 	MainMenuSelected = -1;
 }
@@ -62,7 +68,7 @@ void MainMenu::MoveDown() {
 	{
 		mainMenu[MainMenuSelected].setFillColor(Color::White);
 		MainMenuSelected++;
-		if (MainMenuSelected == 4)
+		if (MainMenuSelected == 5)
 		{
 			MainMenuSelected = 0;
 		}
